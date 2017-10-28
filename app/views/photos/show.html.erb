@@ -6,7 +6,7 @@
 <div id="comment-section">
   <ol id="comments">
     Average score: <%= @photo.comments.average_score %>
-    <%= render @photo.comments %>
+    <%= render @photo.comments.order('created_at DESC') %>
   </ol>
   <% if user_signed_in? %>
     <h3>Add a comment:</h3>
