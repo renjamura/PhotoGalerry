@@ -77,7 +77,7 @@ class PhotosController < ApplicationController
     def photo_owner
       @photo = Photo.find(params[:id])
       if(  @photo.user_id != current_user.id)
-        flash[:notice] = 'Access denied as you are not owner of this Notice'
+        flash[:notice] = 'Access denied as you are not owner of this Photo'
         redirect_to root_path
       end
     end
