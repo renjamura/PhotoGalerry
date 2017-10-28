@@ -2,5 +2,16 @@
 <h1><%= @photo.name %></h1>
 <%= image_tag @photo.image_url %>
 
+<h2><%=  'Comments' %></h2>
+<div id="comment-section">
+  <ol id="comments">
+    <%= render @photo.comments %>
+  </ol>
+
+  <h3>Add a comment:</h3>
+  <%= render 'comments/form' %>
+</div>
+
+
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
 <%= link_to 'Back', :back %>
