@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
+<h1><%= @photo.name %></h1>
+<%= image_tag @photo.image_url %>
 
 <%= link_to 'Edit', edit_photo_path(@photo) %> |
-<%= link_to 'Back', photos_path %>
+<%= link_to 'Back', :back %>
