@@ -10,6 +10,7 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.json
   def show
+    @select_list = { '5':4, '4':3, '3':2, '2':1, '1':0 }
   end
 
   # GET /photos/new

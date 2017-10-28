@@ -5,6 +5,7 @@
 <h2><%=  'Comments' %></h2>
 <div id="comment-section">
   <ol id="comments">
+    Average score: <%= @photo.comments.average_score %>
     <%= render @photo.comments %>
   </ol>
 
