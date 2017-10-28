@@ -45,10 +45,22 @@
   photo_admin.image = Rails.root.join("app/assets/images/fixtures/admin.jpg").open
   photo_admin.save!
   
+  comment_array = ['GOOD', 'WOW', 'NICE', 'Boooo']
   users_array = [user_first, user_second, user_third, user_forth, user_fifth]
+  score_array = ['1','2','3','4','5']
   5.times  do
-    photo_first_comment = Comment.create(body: 'Good' , user: users_array.sample, photo: photo_first)   	
+    photo_first_comment = Comment.create(body: comment_array.sample, score: score_array.sample, user: users_array.sample, photo: photo_first)   	
   end
+  5.times  do
+    photo_second_comment = Comment.create(body: comment_array.sample, score: score_array.sample, user: users_array.sample, photo: photo_second)   	
+  end
+  5.times  do
+    photo_third_comment = Comment.create(body: comment_array.sample, score: score_array.sample, user: users_array.sample, photo: photo_third)   	
+  end
+  5.times  do
+    photo_forth_comment = Comment.create(body: comment_array.sample, score: score_array.sample, user: users_array.sample, photo: photo_forth)   	
+  end
+
 
   
 
