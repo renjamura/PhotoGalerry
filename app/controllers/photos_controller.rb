@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+  before_action :photo_owner, only: [:edit, :update, :destroy]
   before_action :set_photo, only: [:show, :edit, :update, :destroy]
 
   # GET /photos
@@ -10,7 +11,7 @@ class PhotosController < ApplicationController
   # GET /photos/1
   # GET /photos/1.json
   def show
-    @select_list = { '5':4, '4':3, '3':2, '2':1, '1':0 }
+    @select_list = { '5':5, '4':4, '3':3, '2':2, '1':1 }
   end
 
   # GET /photos/new
@@ -71,5 +72,13 @@ class PhotosController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def photo_params
       params.require(:photo).permit(:name, :image, :user_id)
+    end
+
+    def photo_owner
+      @photo = Photo.find(params[:id])
+      if(  @photo.user_id != current_user.id)
+        flash[:notice] = 'Access denied as you are not owner of this Notice'
+        redirect_to root_path
+      end
     end
 end
