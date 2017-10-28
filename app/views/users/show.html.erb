@@ -1,6 +1,7 @@
-<h1> <%= current_user.name %>: Profile </h1>
-<h3> My Photos: <%= link_to 'Create new photo', new_photo_path %> </h2>
-
+<h1> <%= @user.name %>: Profile </h1>
+<% if current_user == @user %>
+  <h3> My Photos: <%= link_to 'Create new photo', new_photo_path %> </h2>
+<% end %>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -15,8 +16,10 @@
       <tr>
         <td><%= image_tag photo.image_url(:thumb) %></td>
         <td><%= link_to photo.name, photo %></td>
-        <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
-        <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if current_user == @user %>
+          <td><%= link_to 'Edit', edit_photo_path(photo) %></td>
+          <td><%= link_to 'Destroy', photo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
